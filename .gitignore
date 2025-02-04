@@ -20,6 +20,8 @@ mlflow/*
 !mlflow/experiments/.gitkeep
 !mlflow/models/.gitkeep
 
+notebooks/temp_download
+
 __pycache__/
 *.py[cod]
 *.so
