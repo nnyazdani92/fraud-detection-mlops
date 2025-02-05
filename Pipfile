@@ -14,6 +14,7 @@ imblearn = "*"
 optuna = "*"
 scikit-learn = "==1.3.1"
 mlflow = "*"
+python-dotenv = "*"
 
 [dev-packages]
 jupyterlab = "*"
