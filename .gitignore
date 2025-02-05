@@ -1,26 +1,7 @@
-data/*
+mlflow/**
 
-!data/processed/
-!data/raw/
-
-!data/processed/.gitkeep
-!data/raw/.gitkeep
-
-models/*
-!models/.gitkeep
-
-logs/*
-!logs/.gitkeep
-
-mlflow/*
-
-!mlflow/experiments
-!mlflow/models
-
-!mlflow/experiments/.gitkeep
-!mlflow/models/.gitkeep
-
-notebooks/temp_download
+!mlflow/**/.gitkeep
+!mlflow/**/.gitkeep
 
 __pycache__/
 *.py[cod]
