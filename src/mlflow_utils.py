@@ -64,14 +64,21 @@ def get_data(run_id: str, dataset_params: dict, artifact_dir: str) -> dict:
     return data
 
 
-def get_targets(preprocessing_run_id: str, dataset_params: dict) -> dict[str, pd.DataFrame]:
+def get_targets(run_id: str, dataset_params: dict, stage: str) -> dict[str, pd.DataFrame]:
     """Retrieve target variables from preprocessing run"""
     client = MlflowClient()
     targets = {}
+
     for split_dir, split_name in zip(dataset_params["split_dirs"], dataset_params["split_names"]):
-        path = client.download_artifacts(
-            preprocessing_run_id,
-            f"data/processed/{split_dir}/y_{split_name}.parquet"
+        path = f"data/{stage}/{split_dir}"
+        artifacts = client.list_artifacts(
+            run_id,
+            path
         )
-        targets[f"y_{split_name}"] = pd.read_parquet(path).squeeze()
+        for artifact in artifacts:
+            target = client.download_artifacts(
+                run_id,
+                artifact.path
+            )
+            targets[f"y_{split_name}"] = pd.read_parquet(target).squeeze()
     return targets

@@ -17,12 +17,15 @@
         "type": "tabular",
         "task": "classification",
         "split": {
-            "val_size": 0.2,
+            "val_size": 0.1,
             "test_size": 0.15,
             "random_state": 42
         },
         "split_dirs": ["training", "validation", "testing"],
-        "split_names": ["train", "val", "test"]
+        "split_names": ["train", "val", "test"],
+        "target_column": "Class",
+        "version": "1.0.0",
+        "source": "https://www.kaggle.com/mlg-ulb/creditcardfraud"
     },
     "experiment_names": {
         "eda": "CreditCardFraudEDA",
@@ -56,12 +59,36 @@
                 "dropout": 0.2
             },
             "training_params": {
-                "lr": 1e-4,
-                "epochs": 100,
+                "lr": 8e-5,
+                "epochs": 200,
                 "batch_size": 256,
                 "weight_decay": 1e-5,
                 "patience": 15
             }
+        }
+    },
+    "feature_selection": {
+        "mi": {
+            "k": 35
+        },
+        "rfe": {
+            "n_features": 30,
+            "subsample": 0.8,
+            "random_state": 42,
+            "step": 1
+        },
+        "shap": {
+            "n_features": 25
+        },
+        "voting": {
+            "min_votes": 2
+        }
+    },
+    "resampling": {
+        "smote": {
+            "random_state": 42,
+            "sampling_strategy": "auto",
+            "k_neighbors": 5
         }
     }
 }
