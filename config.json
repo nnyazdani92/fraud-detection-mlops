@@ -5,7 +5,7 @@
             "processed": "data/processed",
             "engineered": "data/engineered_features",
             "selected": "data/selected_features",
-            "resampled:": "data/resampled"
+            "resampled": "data/resampled"
         },
         "models": "models",
         "reports": "reports",

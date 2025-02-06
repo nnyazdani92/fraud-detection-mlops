@@ -35,6 +35,7 @@ def find_latest_run_id_by_experiment_and_stage(experiment_name: str, stage: str)
     )
     return runs[0].info.run_id if runs else None
 
+
 def get_dataset(run_id: str, artifact_dir: str) -> pd.DataFrame:
     """Retrieve dataset from MLflow artifacts"""
     client = MlflowClient()
