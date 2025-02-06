@@ -35,6 +35,16 @@ def find_latest_run_id_by_experiment_and_stage(experiment_name: str, stage: str)
     )
     return runs[0].info.run_id if runs else None
 
+def get_dataset(run_id: str, artifact_dir: str) -> pd.DataFrame:
+    """Retrieve dataset from MLflow artifacts"""
+    client = MlflowClient()
+    artifacts = client.list_artifacts(run_id, artifact_dir)
+    for artifact in artifacts:
+        if artifact.path.endswith(".csv"):
+            path = client.download_artifacts(run_id, artifact.path)
+            return pd.read_csv(path)
+    return None
+
 
 def get_data(run_id: str, data_params: dict[list[str]], artifact_dir: str) -> dict:
     """Retrieve data from MLflow artifacts"""

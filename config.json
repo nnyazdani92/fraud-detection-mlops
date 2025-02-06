@@ -10,7 +10,14 @@
     },
     "dataset": {
         "name": "mlg-ulb/creditcardfraud",
-        "filename": "creditcard.csv"
+        "filename": "creditcard.csv",
+        "type": "tabular",
+        "task": "classification",
+        "split": {
+            "val_size": 0.2,
+            "test_size": 0.15,
+            "random_state": 42
+        }
     },
     "experiment_names": {
         "eda": "CreditCardFraudEDA",
@@ -29,5 +36,11 @@
         "resampling": "resampling",
         "training": "training",
         "result_analysis": "result_analysis"
+    },
+    "models": {
+        "scaler": {
+            "name": "StandardScaler",
+            "registered_model_name": "CreditCardScaler"
+        }
     }
 }
