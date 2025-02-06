@@ -46,12 +46,12 @@ def get_dataset(run_id: str, artifact_dir: str) -> pd.DataFrame:
     return None
 
 
-def get_data(run_id: str, data_params: dict[list[str]], artifact_dir: str) -> dict:
+def get_data(run_id: str, dataset_params: dict, artifact_dir: str) -> dict:
     """Retrieve data from MLflow artifacts"""
     client = MlflowClient()
     data = {}
 
-    for split_dir in data_params["split_dirs"]:
+    for split_dir in dataset_params["split_dirs"]:
         artifacts = client.list_artifacts(
             run_id, os.path.join(artifact_dir, split_dir))
         for artifact in artifacts:
@@ -63,14 +63,14 @@ def get_data(run_id: str, data_params: dict[list[str]], artifact_dir: str) -> di
     return data
 
 
-def get_targets(preprocessing_run_id: str, config) -> dict[str, pd.Series]:
+def get_targets(preprocessing_run_id: str, dataset_params: dict) -> dict[str, pd.DataFrame]:
     """Retrieve target variables from preprocessing run"""
     client = MlflowClient()
     targets = {}
-    for split, target_split in zip(config["split_dirs"], config["target_split_names"]):
+    for split_dir, split_name in zip(dataset_params["split_dirs"], dataset_params["split_names"]):
         path = client.download_artifacts(
             preprocessing_run_id,
-            f"data/processed/{split}/Target/{target_split}.parquet"
+            f"data/processed/{split_dir}/y_{split_name}.parquet"
         )
-        targets[f"{target_split}"] = pd.read_parquet(path).squeeze()
+        targets[f"y_{split_name}"] = pd.read_parquet(path).squeeze()
     return targets
