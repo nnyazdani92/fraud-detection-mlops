@@ -2,7 +2,10 @@
     "artifacts": {
         "data": {
             "raw": "data/raw",
-            "processed": "data/processed"
+            "processed": "data/processed",
+            "engineered": "data/engineered_features",
+            "selected": "data/selected_features",
+            "resampled:": "data/resampled"
         },
         "models": "models",
         "reports": "reports",
@@ -17,7 +20,9 @@
             "val_size": 0.2,
             "test_size": 0.15,
             "random_state": 42
-        }
+        },
+        "split_dirs": ["training", "validation", "testing"],
+        "split_names": ["train", "val", "test"]
     },
     "experiment_names": {
         "eda": "CreditCardFraudEDA",
@@ -41,6 +46,22 @@
         "scaler": {
             "name": "StandardScaler",
             "registered_model_name": "CreditCardScaler"
+        },
+        "autoencoder": {
+            "name": "Autoencoder",
+            "registered_model_name": "CreditCardAutoencoder",
+            "params": {
+                "encoding_dim": 32,
+                "hidden_dims": [128, 64],
+                "dropout": 0.2
+            },
+            "training_params": {
+                "lr": 1e-4,
+                "epochs": 100,
+                "batch_size": 256,
+                "weight_decay": 1e-5,
+                "patience": 15
+            }
         }
     }
 }
