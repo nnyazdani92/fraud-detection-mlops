@@ -1,0 +1,33 @@
+{
+    "artifacts": {
+        "data": {
+            "raw": "data/raw",
+            "processed": "data/processed"
+        },
+        "models": "models",
+        "reports": "reports",
+        "plots": "reports/plots"
+    },
+    "dataset": {
+        "name": "mlg-ulb/creditcardfraud",
+        "filename": "creditcard.csv"
+    },
+    "experiment_names": {
+        "eda": "CreditCardFraudEDA",
+        "preprocessing": "CreditCardFraudPreprocessing",
+        "feature_engineering": "CreditCardFraudFeatureEngineering",
+        "feature_selection": "CreditCardFraudFeatureSelection",
+        "resampling": "CreditCardFraudResampling",
+        "training": "CreditCardFraudTraining",
+        "result_analysis": "CreditCardFraudResultAnalysis"
+    },
+    "run_names": {
+        "eda": "eda",
+        "preprocessing": "preprocessing",
+        "feature_engineering": "feature_engineering",
+        "feature_selection": "feature_selection",
+        "resampling": "resampling",
+        "training": "training",
+        "result_analysis": "result_analysis"
+    }
+}
