@@ -64,6 +64,6 @@ weighted avg    0.9991       0.999      0.9991        42722
 ```
 ```
 
-**Built with engineering rigor**
+**Built with engineering rigour**
 
 [Connect on LinkedIn](https://www.linkedin.com/in/nnyazdani92)
