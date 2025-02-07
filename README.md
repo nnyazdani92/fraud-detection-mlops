@@ -28,9 +28,9 @@ An enterprise-grade machine learning pipeline for credit card fraud detection, d
 `pipenv` `Jupyter` `Docker` (ready)
 
 
-# 🔍 Results Highlights
+## 🔍 Results Highlights
 
-## Model Performance
+### Model Performance
 
 ```
                 precision    recall     f1-score   support
@@ -44,7 +44,7 @@ weighted avg    0.9991       0.999      0.9991        42722
 
 ```
 
-## MLflow Tracking
+### MLflow Tracking
 
     Experiments: 120+
 
@@ -52,7 +52,7 @@ weighted avg    0.9991       0.999      0.9991        42722
 
     Logged artifacts: Features, metrics, signatures
 
-# 💻 Professional Practices
+## 💻 Professional Practices
 
 - ✅ Testing & Validation
 - ✅ CI/CD Readiness
@@ -60,7 +60,7 @@ weighted avg    0.9991       0.999      0.9991        42722
 - ✅ Error Handling
 - ✅ Scalability
 
-# 🚀 Getting Started
+## 🚀 Getting Started
 ```
 ```
 
