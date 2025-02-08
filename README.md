@@ -12,8 +12,8 @@ An enterprise-grade machine learning pipeline for credit card fraud detection, d
 - **Reproducible Workflows**: Versioned data, models, and configurations
 - **Production-Ready Patterns**:
   - Hyper parameter tuning (Optuna)
-  - Advanced custom automated feature extraction (PyTorch Autoencoders)
-  - Deep Learning integration (PyTorch Autoencoders)
+  - Advanced custom automated feature extraction (Autoencoder)
+  - Deep Learning integration (PyTorch)
   - Class imbalance handling (SMOTE)
 
 ## 🛠 Technical Stack
@@ -30,27 +30,27 @@ An enterprise-grade machine learning pipeline for credit card fraud detection, d
 
 ## 🔍 Results Highlights
 
-### Model Performance
+### Model Performance (unseen test set)
 
 ```
-              precision    recall  f1-score   support
+               precision    recall    f1-score   support
 
-   Not Fraud   0.999733  0.999522  0.999627     71079
-       Fraud   0.753623  0.845528  0.796935       123
+   Not Fraud   0.9997       0.9995    0.9996       71079
+       Fraud   0.7536       0.8455    0.7969         123
 
-    accuracy                       0.999256     71202
-   macro avg   0.876678  0.922525  0.898281     71202
-weighted avg   0.999307  0.999256  0.999277     71202
+    accuracy                          0.9992       71202
+   macro avg   0.8766       0.9225    0.8982       71202
+weighted avg   0.9993       0.9992    0.9992       71202
 
 ```
 
 ### MLflow Tracking
 
-    Experiments: 120+
+    Experiments: 500+
 
-    Registered models: 15 versions
+    Registered models: 50 versions
 
-    Logged artifacts: Features, metrics, signatures
+    Logged artifacts: features, metrics, signatures
 
 ## 💻 Professional Practices
 

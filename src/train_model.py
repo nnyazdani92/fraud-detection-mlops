@@ -74,7 +74,7 @@ def train_model(oversampled_data_artifact_dir, engineering_data_artifact_dir, pr
                           roc_auc_score(y_test, y_pred))
 
         clf_report = classification_report(y_test, y_pred, labels=[0, 1], target_names=[
-                                           "Not Fraud", "Fraud"], digits=6)
+                                           "Not Fraud", "Fraud"], digits=4)
         mlflow.log_text(clf_report, "logistic_classification_report.txt")
 
         def objective(trial):
@@ -140,7 +140,7 @@ def train_model(oversampled_data_artifact_dir, engineering_data_artifact_dir, pr
         mlflow.log_metric("xgb_test_roc_auc", roc_auc_score(y_test, preds))
 
         clf_report_xgb = classification_report(
-            y_test, preds, labels=[0, 1], target_names=["Not Fraud", "Fraud"], digits=6)
+            y_test, preds, labels=[0, 1], target_names=["Not Fraud", "Fraud"], digits=4)
         mlflow.log_text(clf_report_xgb, "xgb_classification_report.txt")
 
 
