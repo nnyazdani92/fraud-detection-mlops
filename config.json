@@ -54,8 +54,8 @@
             "name": "Autoencoder",
             "registered_model_name": "CreditCardAutoencoder",
             "params": {
-                "encoding_dim": 32,
-                "hidden_dims": [128, 64],
+                "encoding_dim": 16,
+                "hidden_dims": [128, 64, 32],
                 "dropout": 0.2
             },
             "training_params": {

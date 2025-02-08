@@ -1,0 +1,34 @@
+name: fraud_pred
+entry_points:
+  load_raw_data:
+    command: "python src/load_raw_data.py"
+  etl_data:
+    parameters:
+      fraud_csv: path
+    command: "python src/etl_data.py --fraud-csv {fraud_csv}"
+  preprocess_data:
+    parameters:
+      fraud_parquet: path
+    command: "python src/preprocess_data.py --fraud-parquet {fraud_parquet}"
+  auto_feature_engineer_data:
+    parameters:
+      preprocessing_data_artifact_dir: path
+    command: "python src/auto_feature_engineer_data.py --preprocessing-data-artifact-dir {preprocessing_data_artifact_dir}"
+  oversample_data:
+    parameters:
+      engineering_data_artifact_dir: path
+      preprocessing_data_artifact_dir: path
+    command:
+      "python src/oversample_data.py --engineering-data-artifact-dir {engineering_data_artifact_dir}
+      --preprocessing-data-artifact-dir {preprocessing_data_artifact_dir}"
+  train_model:
+    parameters:
+      oversampled_data_artifact_dir: path
+      engineering_data_artifact_dir: path
+      preprocessing_data_artifact_dir: path
+    command:
+      "python src/train_model.py --oversampled-data-artifact-dir {oversampled_data_artifact_dir}
+      --engineering-data-artifact-dir {engineering_data_artifact_dir}
+      --preprocessing-data-artifact-dir {preprocessing_data_artifact_dir}"
+  main:
+    command: "python src/main.py"

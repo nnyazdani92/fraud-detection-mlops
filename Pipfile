@@ -13,10 +13,11 @@ xgboost = "*"
 imblearn = "*"
 optuna = "*"
 scikit-learn = "==1.3.1"
-mlflow = "*"
 python-dotenv = "*"
 matplotlib = "*"
 seaborn = "*"
+click = "*"
+mlflow = "*"
 
 [dev-packages]
 jupyterlab = "*"
