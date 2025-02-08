@@ -15,23 +15,33 @@ entry_points:
       preprocessing_data_artifact_dir: path
     command: "python src/auto_feature_engineer_data.py 
       --preprocessing-data-artifact-dir {preprocessing_data_artifact_dir}"
-  oversample_data:
+  auto_feature_select:
     parameters:
       engineering_data_artifact_dir: path
       preprocessing_data_artifact_dir: path
-      sampling_strategy: {type: float, default: 0.05}
     command:
-      "python src/oversample_data.py --engineering-data-artifact-dir {engineering_data_artifact_dir}
+      "python src/auto_feature_select.py 
+      --engineering-data-artifact-dir {engineering_data_artifact_dir}
+      --preprocessing-data-artifact-dir {preprocessing_data_artifact_dir}"
+  oversample_data:
+    parameters:
+      selected_data_artifact_dir: path
+      preprocessing_data_artifact_dir: path
+      sampling_strategy: {type: float, default: 0.35}
+    command:
+      "python src/oversample_data.py 
+      --selected-data-artifact-dir {selected_data_artifact_dir}
       --preprocessing-data-artifact-dir {preprocessing_data_artifact_dir}
       --sampling-strategy {sampling_strategy}"
   train_model:
     parameters:
       oversampled_data_artifact_dir: path
-      engineering_data_artifact_dir: path
+      selected_data_artifact_dir: path
       preprocessing_data_artifact_dir: path
     command:
-      "python src/train_model.py --oversampled-data-artifact-dir {oversampled_data_artifact_dir}
-      --engineering-data-artifact-dir {engineering_data_artifact_dir}
+      "python src/train_model.py 
+      --oversampled-data-artifact-dir {oversampled_data_artifact_dir}
+      --selected-data-artifact-dir {selected_data_artifact_dir}
       --preprocessing-data-artifact-dir {preprocessing_data_artifact_dir}"
   main:
     command: "python src/main.py"

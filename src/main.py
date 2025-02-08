@@ -7,12 +7,11 @@ import mlflow
 
 
 @click.command()
-@click.option("--sampling-strategy", type=float, default=0.05)
+@click.option("--sampling-strategy", type=float, default=0.35)
 def workflow(sampling_strategy):
     """
     This script defines a workflow that chains together the mlflow pipeline.
     """
-    mlflow.set_experiment(experiment_id="0")
     with mlflow.start_run():
         raw_data_run = mlflow.run(".", "load_raw_data", env_manager="local")
         raw_data_artifact_uri = mlflow.get_run(
@@ -34,15 +33,28 @@ def workflow(sampling_strategy):
             run_id=preprocess_data_run.run_id).info.artifact_uri
 
         auto_feature_engineer_data_run = mlflow.run(".", "auto_feature_engineer_data", parameters={
-            "preprocessing_data_artifact_dir": preprocessing_data_artifact_dir}, env_manager="local")
+            "preprocessing_data_artifact_dir": preprocessing_data_artifact_dir},
+            env_manager="local"
+        )
 
         engineering_data_artifact_dir = mlflow.get_run(
             run_id=auto_feature_engineer_data_run.run_id).info.artifact_uri
 
+        auto_feature_select_run = mlflow.run(
+            ".", "auto_feature_select",
+            parameters={
+                "engineering_data_artifact_dir": engineering_data_artifact_dir,
+                "preprocessing_data_artifact_dir": preprocessing_data_artifact_dir,
+            }, env_manager="local"
+        )
+
+        selected_data_artifact_dir = mlflow.get_run(
+            run_id=auto_feature_select_run.run_id).info.artifact_uri
+
         oversample_data_run = mlflow.run(
             ".", "oversample_data",
             parameters={
-                "engineering_data_artifact_dir": engineering_data_artifact_dir,
+                "selected_data_artifact_dir": selected_data_artifact_dir,
                 "preprocessing_data_artifact_dir": preprocessing_data_artifact_dir,
                 "sampling_strategy": sampling_strategy
             },
@@ -56,7 +68,7 @@ def workflow(sampling_strategy):
             ".", "train_model",
             parameters={
                 "oversampled_data_artifact_dir": oversampled_data_artifact_dir,
-                "engineering_data_artifact_dir": engineering_data_artifact_dir,
+                "selected_data_artifact_dir": selected_data_artifact_dir,
                 "preprocessing_data_artifact_dir": preprocessing_data_artifact_dir
             },
             env_manager="local"

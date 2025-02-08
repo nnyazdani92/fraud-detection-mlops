@@ -17,10 +17,10 @@ import mlflow
     help="""Given a parquet file (see auto_feature_engineer_data),
     oversample the minority class using SMOTE and save the result"""
 )
-@click.option("--engineering-data-artifact-dir")
+@click.option("--selected-data-artifact-dir")
 @click.option("--preprocessing-data-artifact-dir")
 @click.option("--sampling-strategy", type=float)
-def oversample_data(engineering_data_artifact_dir, preprocessing_data_artifact_dir, sampling_strategy):
+def oversample_data(selected_data_artifact_dir, preprocessing_data_artifact_dir, sampling_strategy):
     """
     Given a parquet file (see auto_feature_engineer_data), 
     oversample the minority class using SMOTE and save the result
@@ -28,7 +28,7 @@ def oversample_data(engineering_data_artifact_dir, preprocessing_data_artifact_d
     with mlflow.start_run():
         mlflow.sklearn.autolog()
         X_train = pd.read_parquet(os.path.join(
-            engineering_data_artifact_dir, "features", "X_train_enriched.parquet"))
+            selected_data_artifact_dir, "selected", "X_train_selected.parquet"))
         y_train = pd.read_csv(os.path.join(
             preprocessing_data_artifact_dir, "y_train-csv-dir", "y_train.csv"))
 

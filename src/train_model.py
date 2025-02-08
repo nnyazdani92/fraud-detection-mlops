@@ -26,9 +26,9 @@ import mlflow
     and then train an xgboost model using optuna for hyperparameter tuning"""
 )
 @click.option("--oversampled-data-artifact-dir")
-@click.option("--engineering-data-artifact-dir")
+@click.option("--selected-data-artifact-dir")
 @click.option("--preprocessing-data-artifact-dir")
-def train_model(oversampled_data_artifact_dir, engineering_data_artifact_dir, preprocessing_data_artifact_dir):
+def train_model(oversampled_data_artifact_dir, selected_data_artifact_dir, preprocessing_data_artifact_dir):
     """
     Given the output of the oversample_data script, train a logistic regression model 
     and then train an xgboost model using optuna for hyperparameter tuning
@@ -42,12 +42,12 @@ def train_model(oversampled_data_artifact_dir, engineering_data_artifact_dir, pr
             oversampled_data_artifact_dir, "y_train_resampled-csv-dir", "y_train_resampled.csv"))
 
         X_val = pd.read_parquet(os.path.join(
-            engineering_data_artifact_dir, "features", "X_val_enriched.parquet"))
+            selected_data_artifact_dir, "selected", "X_val_selected.parquet"))
         y_val = pd.read_csv(os.path.join(
             preprocessing_data_artifact_dir, "y_val-csv-dir", "y_val.csv"))
 
         X_test = pd.read_parquet(os.path.join(
-            engineering_data_artifact_dir, "features", "X_test_enriched.parquet"))
+            selected_data_artifact_dir, "selected", "X_test_selected.parquet"))
         y_test = pd.read_csv(os.path.join(
             preprocessing_data_artifact_dir, "y_test-csv-dir", "y_test.csv"))
 
