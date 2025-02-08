@@ -7,7 +7,7 @@ import mlflow
 
 
 @click.command()
-@click.option("--sampling-strategy", type=float, default=0.35)
+@click.option("--sampling-strategy", type=float, default=0.05)
 def workflow(sampling_strategy):
     """
     This script defines a workflow that chains together the mlflow pipeline.

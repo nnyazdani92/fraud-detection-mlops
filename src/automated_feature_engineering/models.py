@@ -20,7 +20,6 @@ class Autoencoder(nn.Module):
         self.enc_act3 = nn.ReLU()
         self.enc4 = nn.Linear(32, 16)
 
-        self.layer_norm1 = nn.LayerNorm(128)
         self.layer_norm2 = nn.LayerNorm(64)
         self.layer_norm3 = nn.LayerNorm(32)
 
@@ -49,7 +48,7 @@ class Autoencoder(nn.Module):
         dec2_out = self.dec_act2(self.dec2(dec2_in))
         dec3_in = self.layer_norm2(dec2_out + enc2_out)
         dec3_out = self.dec_act3(self.dec3(dec3_in))
-        dec4_in = self.layer_norm1(dec3_out + enc1_out)
+        dec4_in = dec3_out + enc1_out
         output = self.dec4(dec4_in)
 
         return output

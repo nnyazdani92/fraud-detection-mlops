@@ -34,7 +34,7 @@ class BaseSelector:
 class MutualInfoSelector(BaseSelector):
     """Mutual Information feature selector"""
 
-    def __init__(self, k=45):
+    def __init__(self, k=35):
         super().__init__()
         self.k = k
 
@@ -63,7 +63,7 @@ class RFESelector(BaseSelector):
             device=device
         )
 
-    def fit(self, X: pd.DataFrame, y: pd.DataFrame, n_features=40, step=1, subsample=0.8) -> None:
+    def fit(self, X: pd.DataFrame, y: pd.DataFrame, n_features=30, step=1, subsample=0.8) -> None:
         estimator = self._create_estimator(y, subsample)
         selector = RFE(
             estimator=estimator,
@@ -82,7 +82,7 @@ class RFESelector(BaseSelector):
 class ShapSelector(BaseSelector):
     """SHAP-based feature selector"""
 
-    def __init__(self, n_features=35, device='cpu'):
+    def __init__(self, n_features=25, device='cpu'):
         super().__init__()
         self.device = device
         self.n_features = n_features

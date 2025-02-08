@@ -27,7 +27,7 @@ entry_points:
     parameters:
       selected_data_artifact_dir: path
       preprocessing_data_artifact_dir: path
-      sampling_strategy: {type: float, default: 0.35}
+      sampling_strategy: {type: float, default: 0.05}
     command:
       "python src/oversample_data.py 
       --selected-data-artifact-dir {selected_data_artifact_dir}
