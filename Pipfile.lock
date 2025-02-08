@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b4d0393656ad18bfb34061443ac7316508ac1f5ca455c0a3001538a315aaeede"
+            "sha256": "27985b9a6f1abda64dae0a50172a499ff2a0a9b0ba34c9cb2193f1674e084d4e"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.12"
+            "python_version": "3.10"
         },
         "sources": [
             {
@@ -1903,18 +1903,18 @@
         },
         "xgboost": {
             "hashes": [
-                "sha256:25c0ffcbd62aac5bc22c79e08b5b2edad1d5e37f16610ebefa5f06f3e2ea3d96",
-                "sha256:27af88df1162cee016c67f267a0a16c3db1c48f256e12f64c45c8f8edf9571cd",
-                "sha256:32a43526208fe676527c698cb852e0e9515e6d7294143780e476d335290a131b",
-                "sha256:5d33090880f3d474f8cf5dda557c7bf8dbceefb62f2fd655c77efcabb9cac222",
-                "sha256:7699ec4226156887d3afc665c63ab87469db9d46e361c702ba9fccd22535730c",
-                "sha256:8d85d38553855a1f8c40b8fbccca86af19202f91b244e2c7f77afbb2a6d9d785",
-                "sha256:c9b0c92f13e3650e1e1cf92ff9ecef3efc6f5dc3d10ce17858df2081a89976ef",
-                "sha256:fcbf1912a852bd07a7007be350c8dc3a484c5e775b612f2b3cd082fc76240eb3"
+                "sha256:523db01d4e74b05c61a985028bde88a4dd380eadc97209310621996d7d5d14a7",
+                "sha256:57c7e98111aceef4b689d7d2ce738564a1f7fe44237136837a47847b8b33bade",
+                "sha256:78d88da184562deff25c820d943420342014dd55e0f4c017cc4563c2148df5ee",
+                "sha256:8bbfe4fedc151b83a52edbf0de945fd94358b09a81998f2945ad330fd5f20cd6",
+                "sha256:8df6da72963969ab2bf49a520c3e147b1e15cbeddd3aa0e3e039b3532c739339",
+                "sha256:ab84c4bbedd7fae1a26f61e9dd7897421d5b08454b51c6eb072abc1d346d08d7",
+                "sha256:d366097d0db047315736f46af852feaa907f6d7371716af741cdce488ae36d20",
+                "sha256:f1343a512e634822eab30d300bfc00bf777dc869d881cc74854b42173cfcdb14"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.8'",
-            "version": "==2.1.3"
+            "version": "==2.1.4"
         },
         "zipp": {
             "hashes": [

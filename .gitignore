@@ -17,3 +17,4 @@ build/
 Thumbs.db
 *.pth
 mlartifacts/
+secrets/kaggle.json

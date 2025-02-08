@@ -1,7 +1,7 @@
 # End-to-End Credit Card Fraud Detection Machine Learning Pipeline
 
 [![MLflow](https://img.shields.io/badge/mlflow-%2331A8FF.svg?logo=mlflow&logoColor=white)](https://mlflow.org/)
-[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 
 An enterprise-grade machine learning pipeline for credit card fraud detection, demonstrating professional ML engineering practices and production-ready patterns.
 
@@ -62,9 +62,14 @@ weighted avg   0.9993       0.9992    0.9992       71202
 
 ## 🚀 Getting Started
 ```
-export MLFLOW_TRACKING_URI=<TRACKING_URI>
-mlflow run --env-manager local .
+export KAGGLE_USERNAME=<YOUR_KAGGLE_USERNAME>
+export KAGGLE_KEY=<YOUR_KAGGLE_API_KEY>
+
+docker build --secret id=KAGGLE_USERNAME --secret id=KAGGLE_KEY .
 ```
+
+This will run the mlflow pipeline from data acquisition to model training and (eventual) deployment.
+
 
 **Built with engineering rigour**
 
