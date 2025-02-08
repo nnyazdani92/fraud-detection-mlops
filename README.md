@@ -65,7 +65,8 @@ weighted avg   0.9993       0.9992    0.9992       71202
 export KAGGLE_USERNAME=<YOUR_KAGGLE_USERNAME>
 export KAGGLE_KEY=<YOUR_KAGGLE_API_KEY>
 
-docker build --secret id=KAGGLE_USERNAME --secret id=KAGGLE_KEY .
+docker build -t <TAG_NAME> .
+docker run --gpus all -it -e KAGGLE_USERNAME=<YOUR_KAGGLE_USERNAME> -e KAGGLE_KEY=<YOUR_KAGGLE_API_KEY> <TAG_NAME>
 ```
 
 This will run the mlflow pipeline from data acquisition to model training and (eventual) deployment.
