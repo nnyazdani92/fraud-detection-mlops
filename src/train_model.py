@@ -57,7 +57,7 @@ def train_model(oversampled_data_artifact_dir, engineering_data_artifact_dir, pr
                             axis=0).reset_index(drop=True)
 
         clf = LogisticRegressionCV(
-            cv=5, random_state=42, max_iter=1000, n_jobs=-1, penalty='elasticnet', solver='saga').fit(X_train, y_train.values.ravel())
+            cv=5, random_state=42, max_iter=1000, n_jobs=-1).fit(X_train, y_train.values.ravel())
 
         y_pred = clf.predict(X_test)
 
