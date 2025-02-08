@@ -75,7 +75,7 @@ def train_model(oversampled_data_artifact_dir, engineering_data_artifact_dir, pr
 
         clf_report = classification_report(y_test, y_pred, labels=[0, 1], target_names=[
                                            "Not Fraud", "Fraud"], digits=6)
-        mlflow.log_text(clf_report, "logistic_classification_report")
+        mlflow.log_text(clf_report, "logistic_classification_report.txt")
 
         def objective(trial):
             error = []
@@ -141,7 +141,7 @@ def train_model(oversampled_data_artifact_dir, engineering_data_artifact_dir, pr
 
         clf_report_xgb = classification_report(
             y_test, preds, labels=[0, 1], target_names=["Not Fraud", "Fraud"], digits=6)
-        mlflow.log_text(clf_report_xgb, "xgb_classification_report")
+        mlflow.log_text(clf_report_xgb, "xgb_classification_report.txt")
 
 
 if __name__ == "__main__":

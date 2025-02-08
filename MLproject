@@ -13,14 +13,17 @@ entry_points:
   auto_feature_engineer_data:
     parameters:
       preprocessing_data_artifact_dir: path
-    command: "python src/auto_feature_engineer_data.py --preprocessing-data-artifact-dir {preprocessing_data_artifact_dir}"
+    command: "python src/auto_feature_engineer_data.py 
+      --preprocessing-data-artifact-dir {preprocessing_data_artifact_dir}"
   oversample_data:
     parameters:
       engineering_data_artifact_dir: path
       preprocessing_data_artifact_dir: path
+      sampling_strategy: {type: float, default: 0.05}
     command:
       "python src/oversample_data.py --engineering-data-artifact-dir {engineering_data_artifact_dir}
-      --preprocessing-data-artifact-dir {preprocessing_data_artifact_dir}"
+      --preprocessing-data-artifact-dir {preprocessing_data_artifact_dir}
+      --sampling-strategy {sampling_strategy}"
   train_model:
     parameters:
       oversampled_data_artifact_dir: path

@@ -7,7 +7,8 @@ import mlflow
 
 
 @click.command()
-def workflow():
+@click.option("--sampling-strategy", type=float, default=0.05)
+def workflow(sampling_strategy):
     """
     This script defines a workflow that chains together the mlflow pipeline.
     """
@@ -42,14 +43,16 @@ def workflow():
             ".", "oversample_data",
             parameters={
                 "engineering_data_artifact_dir": engineering_data_artifact_dir,
-                "preprocessing_data_artifact_dir": preprocessing_data_artifact_dir},
+                "preprocessing_data_artifact_dir": preprocessing_data_artifact_dir,
+                "sampling_strategy": sampling_strategy
+            },
             env_manager="local"
         )
 
         oversampled_data_artifact_dir = mlflow.get_run(
             run_id=oversample_data_run.run_id).info.artifact_uri
 
-        train_model_run = mlflow.run(
+        mlflow.run(
             ".", "train_model",
             parameters={
                 "oversampled_data_artifact_dir": oversampled_data_artifact_dir,

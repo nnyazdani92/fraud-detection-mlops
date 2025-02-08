@@ -36,7 +36,8 @@ class FeatureEngineer:
 
     def _filter_split(self, features_key: str, target_key: str) -> pd.DataFrame:
         """Filter non-fraud samples from a single split"""
-        non_fraud_mask = (self.processed_data[target_key] == 0).values.flatten()
+        non_fraud_mask = (
+            self.processed_data[target_key] == 0).values.flatten()
         return self.processed_data[features_key][non_fraud_mask]
 
     def create_loaders(self) -> tuple[DataLoader, DataLoader]:

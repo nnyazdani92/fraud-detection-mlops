@@ -33,14 +33,14 @@ An enterprise-grade machine learning pipeline for credit card fraud detection, d
 ### Model Performance
 
 ```
-                precision    recall     f1-score    support
+              precision    recall  f1-score   support
 
-Not Fraud       0.9996       0.9994     0.9995        42648
-Fraud           0.7023       0.7972     0.7468           74 
+   Not Fraud   0.999733  0.999522  0.999627     71079
+       Fraud   0.753623  0.845528  0.796935       123
 
-accuracy                                0.9991        42722
-macro avg       0.851        0.8983     0.8732        42722
-weighted avg    0.9991       0.999      0.9991        42722
+    accuracy                       0.999256     71202
+   macro avg   0.876678  0.922525  0.898281     71202
+weighted avg   0.999307  0.999256  0.999277     71202
 
 ```
 

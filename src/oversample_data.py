@@ -12,13 +12,15 @@ import pandas as pd
 from imblearn.over_sampling import SMOTE
 import mlflow
 
+
 @click.command(
-    help="""Given a parquet file (see auto_feature_engineer_data), 
+    help="""Given a parquet file (see auto_feature_engineer_data),
     oversample the minority class using SMOTE and save the result"""
 )
 @click.option("--engineering-data-artifact-dir")
 @click.option("--preprocessing-data-artifact-dir")
-def oversample_data(engineering_data_artifact_dir, preprocessing_data_artifact_dir):
+@click.option("--sampling-strategy", type=float)
+def oversample_data(engineering_data_artifact_dir, preprocessing_data_artifact_dir, sampling_strategy):
     """
     Given a parquet file (see auto_feature_engineer_data), 
     oversample the minority class using SMOTE and save the result
@@ -31,7 +33,7 @@ def oversample_data(engineering_data_artifact_dir, preprocessing_data_artifact_d
             preprocessing_data_artifact_dir, "y_train-csv-dir", "y_train.csv"))
 
         # Oversample the minority class
-        smote = SMOTE(sampling_strategy=0.05, random_state=42)
+        smote = SMOTE(sampling_strategy=sampling_strategy, random_state=42)
         X_train_resampled, y_train_resampled = smote.fit_resample(
             X_train, y_train)
 
@@ -44,6 +46,7 @@ def oversample_data(engineering_data_artifact_dir, preprocessing_data_artifact_d
         X_train_resampled.to_parquet(X_train_resampled_fp, index=False)
         y_train_resampled.to_csv(y_train_resampled_fp, index=False)
 
+        mlflow.log_param("sampling_strategy", sampling_strategy)
         mlflow.log_artifact(X_train_resampled_fp,
                             "X_train_resampled-parquet-dir")
         mlflow.log_artifact(y_train_resampled_fp, "y_train_resampled-csv-dir")

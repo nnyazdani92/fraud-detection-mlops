@@ -24,7 +24,6 @@ class Autoencoder(nn.Module):
         self.layer_norm2 = nn.LayerNorm(64)
         self.layer_norm3 = nn.LayerNorm(32)
 
-
         # Decoder with skip connections
         self.dropout = nn.Dropout(0.2)
         self.dec1 = nn.Linear(16, 32)
@@ -46,7 +45,7 @@ class Autoencoder(nn.Module):
 
         # Decoder with skip connections
         dec1_out = self.dec_act1(self.dec1(drop))
-        dec2_in = self.layer_norm3(dec1_out + enc3_out) # Skip connection
+        dec2_in = self.layer_norm3(dec1_out + enc3_out)  # Skip connection
         dec2_out = self.dec_act2(self.dec2(dec2_in))
         dec3_in = self.layer_norm2(dec2_out + enc2_out)
         dec3_out = self.dec_act3(self.dec3(dec3_in))
@@ -75,4 +74,3 @@ class Encoder(nn.Module):
         x = self.enc_act2(self.enc2(x))
         x = self.enc_act3(self.enc3(x))
         return self.enc4(x)
-

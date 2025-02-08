@@ -14,6 +14,7 @@ from sklearn.model_selection import train_test_split
 import joblib
 import mlflow
 
+
 @click.command(
     help="Given a parquet file (see etl_data), split the data, scale the features and save the result "
 )
